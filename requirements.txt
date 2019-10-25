@@ -1,0 +1,4 @@
+bootstrapform
+ckeditor
+ckeditor_uploader
+django-compressor
