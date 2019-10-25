@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+    {% block main %}
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-4">
+            <img class="col" src="{% static 'images/block-red-foguin.png' %}">
+        </div>
+  </div>
+
+    {% endblock %}
+{% block footer %}
+<footer class="">
+  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+
+{% endblock %}
+</body>
+</html>

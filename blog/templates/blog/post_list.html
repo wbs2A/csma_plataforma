@@ -1,0 +1,122 @@
+{% extends 'core/base.html' %}
+{% load static %}
+    {% block main %}
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="row">
+        <div class="col-md-8 px-0">
+          <h1 class="display-4 font-italic">Seja muito bem-vindo!</h1>
+          <p class="lead my-3">Aqui no <span style="font-style: italic">Queimadas? Vôti</span>! Acreditamos que a informação e o conhecimento podem ajudar a tornar o mundo um lugar melhor. Por esta razão, criamos esta plataforma para trazer informação e criar conhecimento, ajudando a cidade de Corumbá na luta contra os incêndios, que ao longo dos anos acaba com as riquezas desta bela cidade!</p>
+          <p class="lead mb-0"><span class="text-white font-weight-bold">Agradecemos sua visita e entre em contato conosco!</span></p>
+        </div>
+        <div class="col-md-4">
+            <img class="col" src="{% static 'images/block-red-foguin.png' %}">
+            </div>
+    </div>
+  </div>
+  <div class="row mb-2">
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-danger">Alarmante</strong>
+          <h3 class="mb-0">Corumbá já registra 694 focos de queimadas</h3>
+          <div class="mb-1 text-muted">19 Ago</div>
+          <p class="card-text mb-auto">Encoberta pela fumaça, Corumbá...</p>
+          <a href="#" class="stretched-link">Continuar leitura...</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="255" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Informação</strong>
+          <h3 class="mb-0">Primeiros Socorros Em Caso De Incêndio</h3>
+          <div class="mb-1 text-muted">24 Ago</div>
+          <p class="mb-auto">Para evitar situações como essa, tenha sempre à mão...</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Últimas notícias
+      </h3>
+        {% for object in object_list %}
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{ object.title }}</h2>
+                <p class="blog-post-meta">{{ object.created_date }}by <a href="#">{{ object.author }}</a></p>
+                {% if object.description %}
+                    {{ object.description }}
+                {% endif %}
+                {{ object.text|safe}}
+            </div>
+            <br>
+        {% endfor %}
+        <br>
+        <nav class="blog-pagination">
+            {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a class="btn btn-outline-primary" href="/?page={{ page_obj.previous_page_number }}">Recentes</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a class="btn btn-outline-secondary" href="/?page={{ page_obj.next_page_number }}">Antigos</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+        </nav>
+
+    </div><!-- /.blog-main -->
+
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">Sobre</h4>
+        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+          <li><a href="#">Outubro 2019</a></li>
+          <li><a href="#">Setembro 2019</a></li>
+        </ol>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Onde nos encontrar?</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+
+</main>
+    {% endblock %}
+{% block footer %}
+<footer class="footer mt-auto py-3">
+  <div class="bg-info">
+    <span class="text-white">Place sticky footer content here.</span>
+  </div>
+</footer>
+{% endblock %}
+</body>
+</html>
