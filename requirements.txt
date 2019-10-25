@@ -1,4 +1,3 @@
 django-bootstrap-form
-ckeditor
-ckeditor_uploader
+django-ckeditor
 django-compressor
