@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
     {% block main %}
+        <div class="container">
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="row">
         <div class="col-md-8 px-0">
@@ -56,7 +57,7 @@
                 <h2 class="blog-post-title">{{ object.title }}</h2>
                 <p class="blog-post-meta">{{ object.created_date }}by <a href="#">{{ object.author }}</a></p>
                 {% if object.description %}
-                    {{ object.description }}
+                    {{ object.snippet }}
                 {% endif %}
                 {{ object.text|safe}}
             </div>

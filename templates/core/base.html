@@ -45,16 +45,19 @@
 
             <div class="nav-scroller py-1 mb-2  ">
                 <nav class="nav d-flex justify-content-between">
+                    <a class="p-2 text-muted" href="{% url 'index' %}"> <i class="fa fa-home"></i></a>
                     <a class="p-2 text-muted" href="{% url 'denuncias' %}">Denúncias</a>
                     <a class="p-2 text-muted" href="{% url 'dicas' %}">Prevenção e cuidados</a>
                     <a class="p-2 text-muted" href="{% url 'doacoes' %}">Doações</a>
                   <a class="p-2 text-muted" href="{% url 'sobre' %}">Sobre</a>
                 </nav>
             </div>
+        </div>
 
 
             {% block main %}
             {% endblock %}
+
             {% block footer %}
             {% endblock %}
         <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>

@@ -1,16 +1,40 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView
 from .models import Post
-# Create your views here.
+
+
 class HomePage(ListView):
     model = Post
     paginate_by = 3
+    def get_queryset(self):
+        return Post.objects.filter(categoria__exact="B")
 
-def prevent(request):
-    return HttpResponse("Prevenção e cuidados")
+class PreventView(ListView):
+    model = Post
+    template_name = 'blog/prevencao_list.html'
+    context_object_name = 'prevent_post_list'
 
-def donations(request):
-    return HttpResponse("Gib money plis")
+    def get_queryset(self):
+        return Post.objects.filter(categoria__exact="P")
+
+
+class DonationsView(ListView):
+    model = Post
+    template_name = 'blog/doacoes_list.html'
+    context_object_name = 'donate_post_list'
+
+    def get_queryset(self):
+        return Post.objects.filter(categoria__exact="Do")
+
 
 def about(request):
-    return HttpResponse("Sobre nois")
+    staff = {"equipe": [
+                            {"nome": "Wesley Barbosa"},
+                            {"nome": "Don Viton"},
+                            {"nome": "Gabriel MC"},
+                            {"nome": "Helmuth Smiles"},
+                            {"nome": "Valdenice da Silva"}
+                        ]
+            }
+    return render(request, 'blog/about.html', staff)
+

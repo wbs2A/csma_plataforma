@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Sobre
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        Vamos criar agora hein
+        <ul>
+            {% for pessoa in equipe  %}
+                <li>{{ pessoa.nome }}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}

@@ -1,21 +1,34 @@
 {% extends 'core/base.html' %}
 {% load static %}
     {% block main %}
-  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-4">
-            <img class="col" src="{% static 'images/block-red-foguin.png' %}">
+        <div class="container">
+            <h3 style="padding: 30px; font-family: Montblanc-Regular" class="text-center text-black"> Contamos com você para tornar nossa cidade melhor! </h3>
+            <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark row">
+                <div class="col-md-4">
+                    <img class="col" src="{% static 'images/block-red-foguin.png' %}">
+                </div>
+                <div class="col-md-3">
+                  <span></span>
+                </div>
+                <div class="col-md border border-white">
+                    <ul style="list-style: none">
+                        <li style="padding: 15px"> <a href="#" class="btn btn-success form-control"> Registrar nova denúncia <i class="fa fa-plus"></i> </a> </li>
+                        <li style="padding: 15px"> <a href="#" class="btn btn-info form-control"> Acompanhar andamento de denúncia </a></li>
+                        <li style="padding: 15px"> <a href="#" class="btn btn-danger form-control"> Queimadas em Corumbá <i class="fa fa-chart-line"></i> </a></li>
+                        <li style="padding: 15px"> <a href="#" class="btn btn-warning form-control"> Contatos importantes <i class="fa fa-phone-volume"></i> </a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-  </div>
+
 
     {% endblock %}
-{% block footer %}
-<footer class="">
-  <p>Blog template <a href="https://getbootstrap.com/">vai</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-  <p>
-    <a href="#">Back to top</a>
-  </p>
-</footer>
-
-{% endblock %}
-</body>
-</html>
+{#{% block footer %}#}
+{#<footer class="">#}
+{#  <p>Blog template <a href="https://getbootstrap.com/">vai</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>#}
+{#  <p>#}
+{#    <a href="#">Back to top</a>#}
+{#  </p>#}
+{#</footer>#}
+{##}
+{#{% endblock %}#}
