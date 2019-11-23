@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Denúncias
+{% endblock %}
+{% load static %}
+    {% block main %}
+        <div class="container">
+            <h3 style="padding: 30px; font-family: Montblanc-Regular" class="text-center text-black"> Contamos com você para tornar nossa cidade melhor! </h3>
+            <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark row">
+                <div class="col-md-4">
+                    <img class="col" src="{% static 'images/right.png' %}">
+                </div>
+                <div class="col-md-3">
+                  <span></span>
+                </div>
+                <div class="col-md border border-white">
+                    <h2>Obrigado por realizar esta denúncia! Estamos muito felizes com sua colaboração</h2>
+                    <br>
+                    {% if user.is_authenticated %}
+                        Você pode acompanhá-la clicando <a class="btn btn-outline-success text-white" href="{% url 'gerenciar_denuncias' %}">aqui</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{#{% block footer %}#}
+{#<footer class="">#}
+{#  <p>Blog template <a href="https://getbootstrap.com/">vai</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>#}
+{#  <p>#}
+{#    <a href="#">Back to top</a>#}
+{#  </p>#}
+{#</footer>#}
+{##}
+{#{% endblock %}#}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+{% endblock %}

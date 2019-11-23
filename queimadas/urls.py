@@ -21,5 +21,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('denuncias/',include('denuncias.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

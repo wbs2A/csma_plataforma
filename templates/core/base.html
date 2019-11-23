@@ -27,18 +27,31 @@
             <header class="blog-header py-3">
                 <div class="row flex-nowrap justify-content-between align-items-center">
                   <div class="col-4 pt-1">
-                    <a id="newsletter" class="btn text-muted" data-toggle="tooltip" data-placement="top" title="Recebe atualizações em tempo real" href="#">Newsletter</a>
+{#                    <a id="newsletter" class="btn text-muted" data-toggle="tooltip" data-placement="top" title="Receba atualizações em tempo real" href="#">Newsletter</a>#}
                   </div>
                   <div class="col-4 text-center">
                       <a class="blog-header-logo text-dark hometitle" href="{% url 'index' %}">Queimadas? <span style="color: rgba(226,88,79,0.85) ">Vôti!</span></a>
                   </div>
                   <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="text-muted" href="#">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-                    </a>
+{#                    <a class="text-muted" href="#">#}
+{#                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>#}
+{#                    </a>#}
                       <div>
-
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Login</a>
+                          {% if user.is_authenticated %}
+                              <div class="btn-group">
+                                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ user.get_short_name }}
+                                  </button>
+                                  <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{% url 'painel' %}">Perfil <i style="padding-left: 3px" class="fa fa-user"></i></a>
+                                        <a class="dropdown-item" href="{% url 'gerenciar_denuncias' %}">Acompanhar<br> denúncias <i style="padding-left: 3px" class="fa fa-bullhorn"></i></a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">Sair <i style="padding-left: 3px" class="fa fa-sign-out-alt"></i></a>
+                                  </div>
+                                </div>
+                          {% else %}
+                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'login' %}">Login</a>
+                          {% endif %}
                   </div>
                 </div>
           </header>

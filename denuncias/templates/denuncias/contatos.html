@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Contatos importantes
+{% endblock %}
+{% load static %}
+    {% block main %}
+        <div class="container">
+            <h3 style="padding: 30px; font-family: Montblanc-Regular" class="text-center text-black"> Telefones e sites úteis </h3>
+            <table class="table table-bordered table-striped">
+                <thead >
+                <tr>
+                    <th scope="col">  Seção    </th>
+                    <th scope="col">  Telefone </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> Corpo de bombeiros </td>
+                        <td> 193 </td>
+                    </tr>
+                    <tr>
+                        <td> CPA ( Centro de Proteção Ambiental) </td>
+                        <td> (67)3385-4542 </td>
+                    </tr>
+                    <tr>
+                        <td> CBI (Comando de Bombeiros do Interior) </td>
+                        <td> (67)3357-9424 </td>
+                    </tr>
+                    <tr>
+                        <td> 3º GBM	Quartel Corumbá </td>
+                        <td> (67) 3232 5866 / 3231 3792 / 3231 2444 </td>
+                    </tr>
+                    <tr>
+                        <td> ABM (24 horas) </td>
+                        <td> 3357-0100 </td>
+                    </tr>
+                    <tr>
+                        <td> Polícia Ambiental </td>
+                        <td> (67)3314-4920 </td>
+                    </tr>
+                    <tr>
+                        <td> Polícia Militar </td>
+                        <td> 190 </td>
+                    </tr>
+                    <tr>
+                        <td> Site da CBMMS</td>
+                        <td> <a target="_blank" href="http://www.bombeiros.ms.gov.br/telefones-uteis/"> http://www.bombeiros.ms.gov.br/telefones-uteis/ </a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'core/dashboard_core.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block page_report %}
+    <span></span>
+{% endblock %}
+
+{% block user_profile_pic %}
+    <img class="img-profile rounded-circle" src="{{ perfil.image.url}}">
+{% endblock %}
+
+{% block username %}
+{{ user.get_short_name }}
+{% endblock %}
+
+{% block page_name %}
+    Perfil
+{% endblock %}
+{% block main_content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ user_form|bootstrap }}
+        {{ profile_form|bootstrap}}
+        <button class="btn btn-success" type="submit">Salvar alterações</button>
+    </form>
+{% endblock %}

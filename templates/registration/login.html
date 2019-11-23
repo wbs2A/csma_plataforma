@@ -1,0 +1,49 @@
+{% load static %}
+{% load bootstrap %}
+{% load compress %}
+
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prevenção e luta contra os incêndios na cidade de Corumbá utilizando informação pública em favor da comunidade.">
+    <meta name="author" content="Wesley Barbosa">
+    <meta name="generator" content="Beta v1.0.3">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-4.3.1/dist/css/bootstrap.css' %}">
+
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'css/app.scss' %}">
+    {% endcompress %}
+
+    <link href="{% static 'vendor/fontawesome/css/fontawesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/fontawesome/css/brands.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/fontawesome/css/solid.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/googleFonts/css.css' %}" rel="stylesheet">
+
+    <title>{% block title %}    {% endblock %}</title>
+  </head>
+    <body>
+        <div class="container">
+            <header class="blog-header py-3">
+                <div class="row flex-nowrap justify-content-between align-items-center">
+                    <div class="col text-center">
+                      <a class="blog-header-logo text-dark hometitle" href="{% url 'index' %}">Queimadas? <span style="color: rgba(226,88,79,0.85) ">Vôti!</span></a>
+                    </div>
+                </div>
+            </header>
+            <div class="container jumbotron col-6">
+                <img class="mx-auto d-block" src="{% static 'images/block-red-foguin.png' %}" width="35%">
+                <h2 class="text-center"> Acessar o sistema</h2>
+                    <form method="post" class="form text-center">
+                        {% csrf_token %}
+                        {{ form|bootstrap }}
+                        <button class="btn btn-success form-control col-3" type="submit">Login</button>
+                    </form>
+                <div class="divider"></div>
+                <a href="{% url 'registrar' %}"> Ainda não tem conta? Cadastre aqui! </a>
+            </div>
+        </div>
+    </body>
+</html>

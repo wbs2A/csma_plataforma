@@ -1,5 +1,9 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
+{% block title %}
+    Blog
+{% endblock %}
     {% block main %}
         <div class="container">
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
@@ -53,15 +57,18 @@
         Últimas notícias
       </h3>
         {% for object in object_list %}
-            <div class="blog-post">
+            <div class="blog-post no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <h2 class="blog-post-title">{{ object.title }}</h2>
                 <p class="blog-post-meta">{{ object.created_date }}by <a href="#">{{ object.author }}</a></p>
                 {% if object.description %}
-                    {{ object.snippet }}
+                    {{ object.description }}
                 {% endif %}
-                {{ object.text|safe}}
+                {{ object.snippet|safe}}
+                <a href="{% url 'detalhar_post' object.id %}" class="stretched-link">...</a>
             </div>
             <br>
+            {% empty %}
+            <h3>Ainda não inserimos posts por aqui! Aguarde mais um pouquinho, que já iremos inserir conteúdo. </h3>
         {% endfor %}
         <br>
         <nav class="blog-pagination">
@@ -88,23 +95,23 @@
     <aside class="col-md-4 blog-sidebar">
       <div class="p-4 mb-3 bg-light rounded">
         <h4 class="font-italic">Sobre</h4>
-        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <p class="mb-0 text-justify">Este site foi elaborado como proposta de intervenção para a matéria de Computação, Sociedade e Meio Ambiente , por um grupo de acadêmicos da UFMS. Ficamos muito feliz em recebê-los e, para conhecer a equipe, acesse a página "Sobre" no menu acima!</p>
       </div>
 
       <div class="p-4">
-        <h4 class="font-italic">Archives</h4>
+        <h4 class="font-italic">Arquivados</h4>
         <ol class="list-unstyled mb-0">
-          <li><a href="#">Outubro 2019</a></li>
-          <li><a href="#">Setembro 2019</a></li>
+          <li><a class="disabled text-muted">Outubro 2019</a></li>
+          <li><a class="disabled text-muted">Setembro 2019</a></li>
         </ol>
       </div>
 
       <div class="p-4">
         <h4 class="font-italic">Onde nos encontrar?</h4>
-        <ol class="list-unstyled">
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Facebook</a></li>
-        </ol>
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item border-0"><a href="#"><img width="30" src="{% static 'images/facebook-icone-icon.png' %}"></a></li>
+          <li class="list-group-item border-0"><a href="#"><img width="37" src="{% static 'images/twitter-icon.png' %}"></a></li>
+        </ul>
       </div>
     </aside>
 
