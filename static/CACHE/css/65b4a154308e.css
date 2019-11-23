@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: "Montblanc-Regular";
-  src: url('../fonts/Montblanc-Regular.ttf');
+  src: url('/static/fonts/Montblanc-Regular.ttf?6e45ed8017c1');
 }
 
 .hometitle{
@@ -80,3 +80,5 @@ hr {
 //		}
 //	}
 }
+
+li.borderless { border-top: 0 none; }

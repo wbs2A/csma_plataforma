@@ -1,0 +1,7 @@
+{% autoescape off %}
+    <h2>Estamos muito felizes em ter você conosco!</h2>
+    <br>
+    <p>Olá {{ user.get_short_name}}, Para confirmar seu cadastro em nosso site, é necessário que você clique no link abaixo (ou copie e insira na parte superior de seu navegador):<br>
+        http://{{ domain }}{% url 'activate' uidb64=uid token=token %}</p>
+    <p>Obrigado por se inscrever na nossa plataforma e esperamos que juntos possamos melhorar a conscientização sobre os riscos das queimadas que tanto assolam nossa cidade!</p>
+{% endautoescape %}

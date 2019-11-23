@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+    Blog
+{% endblock %}
+{% block main %}
+    <div class="container">
+         <div class="blog-post">
+            <span style="float: right"><a href="{% url 'index' %}" class="text-muted"><i class="fa fa-arrow-left"></i></a></span>
+            <h2 class="blog-post-title">{{ post.title }}</h2>
+            <p class="blog-post-meta">{{ post.created_date }} por <a href="#">{{ post.author }}</a></p>
+            {% if post.description %}
+                <hr/>
+                {{ post.description }}
+                <hr/>
+            {% endif %}
+            {{ post.text|safe}}
+        </div>
+    </div>
+{% endblock %}

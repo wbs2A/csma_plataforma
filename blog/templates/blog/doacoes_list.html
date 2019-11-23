@@ -6,6 +6,19 @@
 
 {% block main %}
     <div class="container">
-        {{ donate_post_list }}
+         {% for donate in donate_post_list %}
+             <div class="blog-post">
+                <h2 class="blog-post-title">{{ donate.title }}</h2>
+                <p class="blog-post-meta">{{ donate.created_date }} por <a href="#">{{ donate.author }}</a></p>
+                {% if donate.description %}
+                    <hr/>
+                    {{ donate.description }}
+                    <hr/>
+                {% endif %}
+                {{ donate.text|safe}}
+            </div>
+             {% empty %}
+            <h3>Ainda não inserimos posts por aqui! Aguarde mais um pouquinho, que já iremos inserir conteúdo. </h3>
+        {% endfor %}
     </div>
 {% endblock %}

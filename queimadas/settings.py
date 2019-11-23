@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'denuncias',
+    'accounts',
     'bootstrapform',
     'ckeditor',
     'ckeditor_uploader',
@@ -144,6 +145,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -172,3 +175,7 @@ STATICFILES_FINDERS = (
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+
+MAILCHIMP_API_KEY='bb2e3e390cdcb9b85f11a6dbfd41ac9b-us5'
+MAILCHIMP_DATA_CENTER='us5'
+MAILCHIMP_EMAIL_LIST_ID=''

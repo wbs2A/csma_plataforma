@@ -1,3 +1,11 @@
+django
 django-bootstrap-form
 django-ckeditor
 django-compressor
+netCDF4
+pandas
+NumPy
+Matplotlib
+xarray
+plotly
+Pillow

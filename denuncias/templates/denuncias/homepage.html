@@ -1,4 +1,8 @@
 {% extends 'core/base.html' %}
+
+{% block title %}
+    Denúncias
+{% endblock %}
 {% load static %}
     {% block main %}
         <div class="container">
@@ -12,16 +16,19 @@
                 </div>
                 <div class="col-md border border-white">
                     <ul style="list-style: none">
-                        <li style="padding: 15px"> <a href="#" class="btn btn-success form-control"> Registrar nova denúncia <i class="fa fa-plus"></i> </a> </li>
-                        <li style="padding: 15px"> <a href="#" class="btn btn-info form-control"> Acompanhar andamento de denúncia </a></li>
-                        <li style="padding: 15px"> <a href="#" class="btn btn-danger form-control"> Queimadas em Corumbá <i class="fa fa-chart-line"></i> </a></li>
-                        <li style="padding: 15px"> <a href="#" class="btn btn-warning form-control"> Contatos importantes <i class="fa fa-phone-volume"></i> </a></li>
+                        <li style="padding: 15px"> <a href="{% url 'denuncias_create' %}" class="btn btn-success form-control"> Registrar nova denúncia <i class="fa fa-plus"></i> </a> </li>
+                        {% if user.is_authenticated  %}
+                            <li style="padding: 15px"> <a href="{% url 'gerenciar_denuncias' %}" class="btn btn-info form-control"> Acompanhar andamento de denúncia </a></li>
+                        {% else %}
+                            <li style="padding: 15px"> <a href="#" class="btn btn-info form-control disabled"> Acompanhar andamento de denúncia </a>
+                            <small id="infoHelp" class="form-text text-muted text-center">Você precisa acessar o sistema para isto.</small></li>
+                        {% endif %}
+                        <li style="padding: 15px"> <a href="{% url 'estatisticas' %}" class="btn btn-danger form-control"> Queimadas em Corumbá <i class="fa fa-chart-line"></i> </a></li>
+                        <li style="padding: 15px"> <a href="{% url 'contatos' %}" class="btn btn-warning form-control"> Contatos importantes <i class="fa fa-phone-volume"></i> </a></li>
                     </ul>
                 </div>
             </div>
         </div>
-
-
     {% endblock %}
 {#{% block footer %}#}
 {#<footer class="">#}
@@ -32,3 +39,11 @@
 {#</footer>#}
 {##}
 {#{% endblock %}#}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+{% endblock %}

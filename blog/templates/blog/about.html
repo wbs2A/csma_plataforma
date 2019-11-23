@@ -1,17 +1,28 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block title %}
-    Sobre
+    Sobre a Equipe
 {% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container jumbotron">
         Vamos criar agora hein
-        <ul>
+        <div class="row">
             {% for pessoa in equipe  %}
-                <li>{{ pessoa.nome }}</li>
+                <div class="col">
+                    <div class="card card-inverse text-center" style="max-width: 150px;   border-radius: 70px;">
+                        <img style="border-radius: 50px 50px 0px 0px;" height="180" class="card-img-top" src="{% static  pessoa.img %}">
+                        <div class="card-img-overlay">
+                            <p style="padding-top: 80%" class="{{ pessoa.class }}">{{ pessoa.nome }}</p>
+                        </div>
+                        <div class="card-body">
+                            {{ pessoa.descript }}
+                        </div>
+                    </div>
+
+                </div>
             {% endfor %}
-        </ul>
+        </div>
 
     </div>
 {% endblock %}

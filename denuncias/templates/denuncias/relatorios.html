@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Relatórios
+{% endblock %}
+{% load static %}
+{% block main %}
+    <div class="container">
+        <h3 style="padding: 30px; font-family: Montblanc-Regular" class="text-center text-black"> Primeiro relatório</h3>
+        <div style="width:100%;height:100%">
+            {{ graph_div|safe }}
+        </div>
+    </div>
+{% endblock %}

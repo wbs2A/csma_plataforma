@@ -1,13 +1,13 @@
-from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
 from .models import Post
 
 
 class HomePage(ListView):
     model = Post
-    paginate_by = 3
+    paginate_by = 6
     def get_queryset(self):
-        return Post.objects.filter(categoria__exact="B")
+        return Post.objects.filter(categoria__exact="B").order_by('-published_date')
 
 class PreventView(ListView):
     model = Post
@@ -27,13 +27,18 @@ class DonationsView(ListView):
         return Post.objects.filter(categoria__exact="Do")
 
 
+def post_detail_view(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', context={"post":post})
+
+
 def about(request):
     staff = {"equipe": [
-                            {"nome": "Wesley Barbosa"},
-                            {"nome": "Don Viton"},
-                            {"nome": "Gabriel MC"},
-                            {"nome": "Helmuth Smiles"},
-                            {"nome": "Valdenice da Silva"}
+                            {"nome": "Wesley Barbosa", "img": "images/wesley.jpeg", "descript": "Programador python nas horas vagas e desenvolvedor deste site ^^", "class": "card-text text-white"},
+                            {"nome": "Don Viton", "img": "images/kleber-bambam-instagram.jpg", "descript": "A acrescentar", "class":"card-text text-white"},
+                            {"nome": "Gabriel MC", "img": "images/gabrielmc.jpg", "descript": "A acrescentar", "class":"card-text text-white"},
+                            {"nome": "Helmuth Smiles", "img": "images/Helmuth.jpg",  "descript": "A acrescentar", "class": "card-text text-black"},
+                            {"nome": "Valdenice da Silva", "img": "images/valdenize.jpg",  "descript": "A acrescentar", "class": "card-text text-white"}
                         ]
             }
     return render(request, 'blog/about.html', staff)
